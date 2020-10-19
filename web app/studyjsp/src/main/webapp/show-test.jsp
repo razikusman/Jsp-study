@@ -9,13 +9,28 @@
 <html>
      <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Test Page</title>
+        <title>Test </title>
     </head>
-    <body>
-        <c:forEach var="items" items="${TestItems}">
+    <body >
+        <h1 align="center"><u>Student Marks in Exams</u></h1>
+        <table border="1" cellpadding="5px" align="center" bordercolor="red">
             
-            ${items}
+            <tr>
+                <th>Test ID</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Test Marks</th>
+            </tr>
+            <c:forEach var="items" items="${Testitems}">
+                <tr>
+                    <td>${items.test_id}</td>
+                    <td>${items.student_id}</td>
+                    <td>${items.student_name}</td>
+                    <td>${items.test_marks}</td>
+                </tr>
             
-        </c:forEach>
+             </c:forEach>
+        </table>
+        
     </body>
 </html>

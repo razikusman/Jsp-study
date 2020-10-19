@@ -7,6 +7,10 @@ package study.jsp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,8 +68,24 @@ public class study extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         
         //get data from database
-        String TestItems[] = {"Usman" , "Nishanthan" , "Radhidha" };
-        request.setAttribute( "TestItems" , TestItems);
+        try 
+        {
+            List<test> Testitems = TestDBUtil.gettestList();
+            //List<test> Testitems = TestDBUtil.gettestList();
+            request.setAttribute("Testitems", Testitems);
+            
+        } 
+        
+        catch (ClassNotFoundException ex) 
+        {
+            Logger.getLogger(study.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(study.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         //redirect to diferent page
         
